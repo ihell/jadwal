@@ -73,3 +73,20 @@ export async function ambilDaftarGuru() {
 export function formatAngka(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
+
+  export async function ubahMapel(docId, jam, pelajaran, guru, mp) {
+    await updateDoc(doc(db, "mapel", docId), {
+      jam: jam,
+      pelajaran: pelajaran,
+      guru: guru,
+      mp: mp
+    });
+  }
+
+//  ambil data
+export async function ambilMapel(docId) {
+    const docRef = await doc(db, "mapel", docId);
+    const docSnap = await getDoc(docRef);
+  
+    return await docSnap.data();
+  }
