@@ -23,7 +23,7 @@ const firebaseConfig = {
   measurementId: "G-VBHD7G08PJ"
 };
 
-// ambil data untuk mapel
+// ambil data untuk mapel hari senin
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -53,6 +53,7 @@ export async function ambilDaftarSenin() {
   return hasil;
 }
 
+// ambil data mapel hari selasa
 export async function ambilDaftarSelasa() {
   const refDokumen = collection(db, "selasa");
   const kueri = query(refDokumen, orderBy("jam1"));
@@ -83,6 +84,94 @@ export async function ambilDaftarSelasa() {
   return hasil;
 }
 
+// ambil data mapel hari rabu
+export async function ambilDaftarRabu() {
+  const refDokumen = collection(db, "rabu");
+  const kueri = query(refDokumen, orderBy("jam1"));
+  const cuplikanKueri = await getDocs(kueri);
+
+  let hasil = [];
+  cuplikanKueri.forEach((dok) => {
+    hasil.push({
+      id: dok.id,
+      jam1: dok.data().jam1,
+      jam2: dok.data().jam2,
+      jam3: dok.data().jam3,
+      jam4: dok.data().jam4,
+      x1: dok.data().x1,
+      x2: dok.data().x2,
+      x3: dok.data().x3,
+      x4: dok.data().x4,
+      xi1: dok.data().xi1,
+      xi2: dok.data().xi2,
+      xi3: dok.data().xi3,
+      xi4: dok.data().xi4,
+      xii1: dok.data().xii1,
+      xii2: dok.data().xii2,
+      xii3: dok.data().xii3,
+      xii4: dok.data().xii4
+    });
+  });
+  return hasil;
+}
+
+// ambil data mapel hari kamis
+export async function ambilDaftarKamis() {
+  const refDokumen = collection(db, "kamis");
+  const kueri = query(refDokumen, orderBy("jam1"));
+  const cuplikanKueri = await getDocs(kueri);
+
+  let hasil = [];
+  cuplikanKueri.forEach((dok) => {
+    hasil.push({
+      id: dok.id,
+      jam1: dok.data().jam1,
+      jam2: dok.data().jam2,
+      jam3: dok.data().jam3,
+      jam4: dok.data().jam4,
+      x1: dok.data().x1,
+      x2: dok.data().x2,
+      x3: dok.data().x3,
+      x4: dok.data().x4,
+      xi1: dok.data().xi1,
+      xi2: dok.data().xi2,
+      xi3: dok.data().xi3,
+      xi4: dok.data().xi4,
+      xii1: dok.data().xii1,
+      xii2: dok.data().xii2,
+      xii3: dok.data().xii3,
+      xii4: dok.data().xii4
+    });
+  });
+  return hasil;
+}
+
+// ambil data mapel hari jumat
+export async function ambilDaftarJumat() {
+  const refDokumen = collection(db, "jumat");
+  const kueri = query(refDokumen, orderBy("jam1"));
+  const cuplikanKueri = await getDocs(kueri);
+
+  let hasil = [];
+  cuplikanKueri.forEach((dok) => {
+    hasil.push({
+      id: dok.id,
+      jam1: dok.data().jam1,
+      jam2: dok.data().jam2,
+      jam3: dok.data().jam3,
+      x1: dok.data().x1,
+      x2: dok.data().x2,
+      x3: dok.data().x3,
+      xi1: dok.data().xi1,
+      xi2: dok.data().xi2,
+      xi3: dok.data().xi3,
+      xii1: dok.data().xii1,
+      xii2: dok.data().xii2,
+      xii3: dok.data().xii3
+    });
+  });
+  return hasil;
+}
 
 // ambil data untuk guru
 export async function ambilDaftarGuru() {
