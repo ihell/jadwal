@@ -20,51 +20,76 @@
 </head>
 
 <body>
-
-    <table>
-        <tr>
-            <th scope="col" colspan="3">Kelas</th>
-        </tr>
-        <tr>
-            <th scope="col">X</th>
-            <th scope="col">XI</th>
-            <th scope="col">XII</th>
-        </tr>
-        <tr>
-            <th scope="col">Hari</th>
-        </tr>
-    </table>
-
+    <h1>Senin</h1>
     <table class="height: 100% min-height: 100vh" class="table" id="daftar-mapel">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Jam</th>
-                <th scope="col">Pelajaran</th>
-                <th scope="col" colspan="2">Nama Guru Dan Mapel</th>
+                <th scope="col">Waktu</th>
+                <th scope="col">X</th>
+                <th scope="col">XI</th>
+                <th scope="col">XII</th>
                 <th scope="col">Tombol</th>
             </tr>
         </thead>
         <tbody>
+            <table class="height: 100% min-height: 100vh" class="table" id="daftar-guru">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2">Nama Guru Dan Mapel</th>
+                        <th scope="col">Tombol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </tbody>
+        
     </table>
 
+    
     <script type="module">
-        import { ambilDaftarMapel, formatAngka } from './functions.js';
+        import { ambilDaftarGuru, ambilDaftarSenin, formatAngka } from './functions.js';
+
+        $(document).ready(async function () {
+            let elemenDaftar = $("#daftar-guru > tbody");
+            let daftarGuru = await ambilDaftarGuru();
+            let nomor = 1;
+
+            daftarGuru.forEach((data) => {
+                elemenDaftar.append(
+                    '<tr>' +
+                    '<td>' + data.nama + '<td>' + data.pelajaran + '</td>' +
+                    
+                    '<td class="stack-up">' +
+                    ' <a href="#" class="btn btn-warning link-ubah"  data="' +
+                    data.id +
+                    '">ubah</a> ' +
+                    ' <button class="btn btn-danger tombol-hapus" data="' +
+                    data.id +
+                    '">Hapus</button>' + '</td>' +
+                    '</tr>'
+                );
+                nomor = nomor + 1;
+            });
+
+            $('#loader').hide();
+
+        });
 
         $(document).ready(async function () {
             let elemenDaftar = $("#daftar-mapel > tbody");
-            let daftarMapel = await ambilDaftarMapel();
+            let daftarSenin = await ambilDaftarSenin();
             let nomor = 1;
 
-            daftarMapel.forEach((data) => {
+            daftarSenin.forEach((data) => {
                 elemenDaftar.append(
                     '<tr>' +
                     '<th>' + nomor + '</th>' +
-                    '<td>' + data.jam + '</td>' +
-                    '<td>' + data.pelajaran + '</td>' +
-                    '<td>' + data.guru + '</td>' +
-                    '<td>' + data.mp + '</td>' +
+                    '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '</td>' +
+                    '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '</td>' +
+                    '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '</td>' +        
+                    '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '</td>' +
                     '<td class="stack-up">' +
                     ' <a href="#" class="btn btn-warning link-ubah"  data="' +
                     data.id +

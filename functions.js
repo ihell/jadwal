@@ -27,20 +27,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export async function ambilDaftarMapel() {
-  const refDokumen = collection(db, "mapel");
-  const kueri = query(refDokumen, orderBy("jam"));
+export async function ambilDaftarSenin() {
+  const refDokumen = collection(db, "senin");
+  const kueri = query(refDokumen, orderBy("jam1"));
   const cuplikanKueri = await getDocs(kueri);
 
   let hasil = [];
   cuplikanKueri.forEach((dok) => {
     hasil.push({
       id: dok.id,
-      jam: dok.data().jam,
-      pelajaran: dok.data().pelajaran,
-      guru: dok.data().guru,
-      mp: dok.data().mp,
-
+      jam1: dok.data().jam1,
+      jam2: dok.data().jam2,
+      jam3: dok.data().jam3,
+      x1: dok.data().x1,
+      x2: dok.data().x2,
+      x3: dok.data().x3,
+      xi1: dok.data().xi1,
+      xi2: dok.data().xi2,
+      xi3: dok.data().xi3,
+      xii1: dok.data().xii1,
+      xii2: dok.data().xii2,
+      xii3: dok.data().xii3
     });
   });
 
