@@ -20,11 +20,10 @@
 </head>
 
 <body>
-    <h1>Senin</h1>
     <table class="height: 100% min-height: 100vh" class="table" id="daftar-mapel">
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">Hari</th>
                 <th scope="col">Waktu</th>
                 <th scope="col">X</th>
                 <th scope="col">XI</th>
@@ -35,7 +34,7 @@
         <tbody id="1">
         </tbody>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Hari</th>
             <th scope="col">Waktu</th>
             <th scope="col">X</th>
             <th scope="col">XI</th>
@@ -91,12 +90,12 @@
         $(document).ready(async function () {
             let elemenDaftar = $("#daftar-mapel > tbody#1");
             let daftarSenin = await ambilDaftarSenin();
-            let nomor = 1;
+            let hari = "senin";
 
             daftarSenin.forEach((data) => {
                 elemenDaftar.append(
                     '<tr>' +
-                    '<th>' + nomor + '</th>' +
+                    '<th>' + hari + '</th>' +
                     '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '</td>' +
                     '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '</td>' +
                     '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '</td>' +
@@ -110,7 +109,6 @@
                     '">Hapus</button>' + '</td>' +
                     '</tr>'
                 );
-                nomor = nomor + 1;
             });
 
             $('.tombol-hapus').click(async function () {
@@ -129,12 +127,12 @@
         $(document).ready(async function () {
             let elemenDaftar = $("#daftar-mapel > tbody#2");
             let daftarSelasa = await ambilDaftarSelasa();
-            let nomor = 1;
+            let hari = "selasa";
 
             daftarSelasa.forEach((data) => {
                 elemenDaftar.append(
                     '<tr>' +
-                    '<th>' + nomor + '</th>' +
+                    '<th>' + hari + '</th>' +
                     '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '<br>' + data.jam4 + '</td>' +
                     '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '<br>' + data.x4 + '</td>' +
                     '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '<br>' + data.xi4 + '</td>' +
@@ -148,7 +146,6 @@
                     '">Hapus</button>' + '</td>' +
                     '</tr>'
                 );
-                nomor = nomor + 1;
             });
 
             $('.tombol-hapus').click(async function () {
