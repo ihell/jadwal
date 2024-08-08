@@ -32,24 +32,35 @@
                 <th scope="col">Tombol</th>
             </tr>
         </thead>
-        <tbody>
-            <table class="height: 100% min-height: 100vh" class="table" id="daftar-guru">
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="2">Nama Guru Dan Mapel</th>
-                        <th scope="col">Tombol</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <tbody id="1">
         </tbody>
-        
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Waktu</th>
+            <th scope="col">X</th>
+            <th scope="col">XI</th>
+            <th scope="col">XII</th>
+            <th scope="col">Tombol</th>
+        </tr>
+        <tbody id="2">
+        </tbody>
+
+        <table class="height: 100% min-height: 100vh" class="table" id="daftar-guru">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2">Nama Guru Dan Mapel</th>
+                    <th scope="col">Tombol</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
     </table>
 
-    
+
     <script type="module">
-        import { ambilDaftarGuru, ambilDaftarSenin, formatAngka } from './functions.js';
+        import { ambilDaftarGuru, ambilDaftarSenin, ambilDaftarSelasa, formatAngka } from './functions.js';
 
         $(document).ready(async function () {
             let elemenDaftar = $("#daftar-guru > tbody");
@@ -60,7 +71,7 @@
                 elemenDaftar.append(
                     '<tr>' +
                     '<td>' + data.nama + '<td>' + data.pelajaran + '</td>' +
-                    
+
                     '<td class="stack-up">' +
                     ' <a href="#" class="btn btn-warning link-ubah"  data="' +
                     data.id +
@@ -78,7 +89,7 @@
         });
 
         $(document).ready(async function () {
-            let elemenDaftar = $("#daftar-mapel > tbody");
+            let elemenDaftar = $("#daftar-mapel > tbody#1");
             let daftarSenin = await ambilDaftarSenin();
             let nomor = 1;
 
@@ -88,8 +99,46 @@
                     '<th>' + nomor + '</th>' +
                     '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '</td>' +
                     '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '</td>' +
-                    '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '</td>' +        
+                    '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '</td>' +
                     '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '</td>' +
+                    '<td class="stack-up">' +
+                    ' <a href="#" class="btn btn-warning link-ubah"  data="' +
+                    data.id +
+                    '">ubah</a> ' +
+                    ' <button class="btn btn-danger tombol-hapus" data="' +
+                    data.id +
+                    '">Hapus</button>' + '</td>' +
+                    '</tr>'
+                );
+                nomor = nomor + 1;
+            });
+
+            $('.tombol-hapus').click(async function () {
+                await hapusAbsensi($(this).attr('data'));
+                location.reload();
+            })
+
+            $('.link-ubah').click(async function () {
+                window.location.replace('ubah.html?docId=' + $(this).attr('data'));
+            })
+
+            $('#loader').hide();
+
+        });
+
+        $(document).ready(async function () {
+            let elemenDaftar = $("#daftar-mapel > tbody#2");
+            let daftarSelasa = await ambilDaftarSelasa();
+            let nomor = 1;
+
+            daftarSelasa.forEach((data) => {
+                elemenDaftar.append(
+                    '<tr>' +
+                    '<th>' + nomor + '</th>' +
+                    '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '<br>' + data.jam4 + '</td>' +
+                    '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '<br>' + data.x4 + '</td>' +
+                    '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '<br>' + data.xi4 + '</td>' +
+                    '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '<br>' + data.xii4 + '</td>' +
                     '<td class="stack-up">' +
                     ' <a href="#" class="btn btn-warning link-ubah"  data="' +
                     data.id +

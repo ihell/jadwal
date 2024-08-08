@@ -50,11 +50,39 @@ export async function ambilDaftarSenin() {
       xii3: dok.data().xii3
     });
   });
-
-
-
   return hasil;
 }
+
+export async function ambilDaftarSelasa() {
+  const refDokumen = collection(db, "selasa");
+  const kueri = query(refDokumen, orderBy("jam1"));
+  const cuplikanKueri = await getDocs(kueri);
+
+  let hasil = [];
+  cuplikanKueri.forEach((dok) => {
+    hasil.push({
+      id: dok.id,
+      jam1: dok.data().jam1,
+      jam2: dok.data().jam2,
+      jam3: dok.data().jam3,
+      jam4: dok.data().jam4,
+      x1: dok.data().x1,
+      x2: dok.data().x2,
+      x3: dok.data().x3,
+      x4: dok.data().x4,
+      xi1: dok.data().xi1,
+      xi2: dok.data().xi2,
+      xi3: dok.data().xi3,
+      xi4: dok.data().xi4,
+      xii1: dok.data().xii1,
+      xii2: dok.data().xii2,
+      xii3: dok.data().xii3,
+      xii4: dok.data().xii4
+    });
+  });
+  return hasil;
+}
+
 
 // ambil data untuk guru
 export async function ambilDaftarGuru() {
@@ -68,7 +96,7 @@ export async function ambilDaftarGuru() {
       id: dok.id,
       nama: dok.data().nama,
       pelajaran: dok.data().pelajaran,
-      
+
     });
   });
 
@@ -78,22 +106,22 @@ export async function ambilDaftarGuru() {
 }
 
 export function formatAngka(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
-  export async function ubahMapel(docId, jam, pelajaran, guru, mp) {
-    await updateDoc(doc(db, "mapel", docId), {
-      jam: jam,
-      pelajaran: pelajaran,
-      guru: guru,
-      mp: mp
-    });
-  }
+export async function ubahMapel(docId, jam, pelajaran, guru, mp) {
+  await updateDoc(doc(db, "mapel", docId), {
+    jam: jam,
+    pelajaran: pelajaran,
+    guru: guru,
+    mp: mp
+  });
+}
 
 //  ambil data
 export async function ambilMapel(docId) {
-    const docRef = await doc(db, "mapel", docId);
-    const docSnap = await getDoc(docRef);
-  
-    return await docSnap.data();
-  }
+  const docRef = await doc(db, "mapel", docId);
+  const docSnap = await getDoc(docRef);
+
+  return await docSnap.data();
+}
