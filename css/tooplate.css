@@ -1,0 +1,118 @@
+
+:root {
+  --white-color:                  #FFFFFF;
+  --primary-color:                #f44749;
+  --secondary-color:              #f3af24;
+  --section-bg-color:             #F9F9F9;
+  --dark-color:                   #000000;
+  --title-color:                  #565758;
+  --news-title-color:             #292828;
+  --p-color:                      #717275;
+  --border-color:                 #eaeaea;
+  --border-radius-default:        .25rem;
+
+  --body-font-family:             'Montserrat', sans-serif;
+
+  --h1-font-size:                 76px;
+  --h2-font-size:                 56px;
+  --h3-font-size:                 42px;
+  --h4-font-size:                 28px;
+  --h5-font-size:                 26px;
+  --h6-font-size:                 22px;
+
+  --p-font-size:                  18px;
+  --menu-font-size:               18px;
+  --category-font-size:           14px;
+
+  --font-weight-light:            300;
+  --font-weight-normal:           400;
+  --font-weight-semibold:         600;
+  --font-weight-bold:             700;
+}
+
+body {
+    background: var(--white-color);
+    font-family: var(--body-font-family);    
+    position: relative;
+}
+
+/*---------------------------------------
+  FOOTER              
+-----------------------------------------*/
+.site-footer {
+  background-image: url('../images/teyvat.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  position: relative;
+}
+
+.site-footer::before {
+  content: "";
+  background: linear-gradient(to top, var(--dark-color), transparent 200%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.site-footer .container {
+  position: relative;
+}
+
+.tooplate-mt30 {
+	margin-top: 30px;
+}
+.tooplate-mt60 {
+	margin-top: 60px;
+}
+
+.copyright-text {
+  font-size: var(--menu-font-size);
+}
+
+.tel-link {
+  color: var(--p-color);
+}
+
+.site-footer a:hover {
+  color: var(--white-color);
+}
+
+.site-footer a {
+  	color: #AAA;;
+}
+
+.site-footer p {
+	color: #AAA;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.stack-up {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
