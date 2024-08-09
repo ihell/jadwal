@@ -37,16 +37,16 @@ export async function ambilDaftarSenin() {
     hasil.push({
       id: dok.id,
       jam1: dok.data().jam1,
-      jam2: dok.data().jam2,
-      jam3: dok.data().jam3,
       x1: dok.data().x1,
-      x2: dok.data().x2,
-      x3: dok.data().x3,
       xi1: dok.data().xi1,
-      xi2: dok.data().xi2,
-      xi3: dok.data().xi3,
       xii1: dok.data().xii1,
+      jam2: dok.data().jam2,
+      x2: dok.data().x2,
+      xi2: dok.data().xi2,
       xii2: dok.data().xii2,
+      jam3: dok.data().jam3,
+      x3: dok.data().x3,
+      xi3: dok.data().xi3,
       xii3: dok.data().xii3
     });
   });
@@ -198,18 +198,29 @@ export function formatAngka(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-export async function ubahMapel(docId, jam, pelajaran, guru, mp) {
-  await updateDoc(doc(db, "mapel", docId), {
-    jam: jam,
-    pelajaran: pelajaran,
-    guru: guru,
-    mp: mp
+export async function ubahSenin(docId, jam1, x1, xi1,  xii1,  
+                                       jam2, x2, xi2,  xii2,   
+                                       jam3, x3, xi3, xii3
+) {
+  await updateDoc(doc(db, "senin", docId), {
+    jam1: jam1,
+    x1: x1,
+    xi1: xi1,
+    xii1: xii1,
+    jam2: jam2,
+    x2: x2,
+    xi2: xi2,
+    xii2: xii2,
+    jam3: jam3,
+    x3: x3,
+    xi3: xi3,
+    xii3: xii3
   });
 }
 
 //  ambil data
-export async function ambilMapel(docId) {
-  const docRef = await doc(db, "mapel", docId);
+export async function ambilSenin(docId) {
+  const docRef = await doc(db, "senin", docId);
   const docSnap = await getDoc(docRef);
 
   return await docSnap.data();

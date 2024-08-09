@@ -38,58 +38,117 @@
   </nav>
 
 <body class="m-4">
-
-
+  
   <form class="mb-3">
-    <div class="mb-3">
-      <div class="mb-3">
-        <label class="form-label">Jam</label>
-        <input type="text" class="form-control" id="input-jam">
+    <div class="mb-3" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+      <div>
+        <label class="form-label" for="input-jam1">Jam1</label>
+        <input type="text" class="form-control" id="input-jam1">
+      </div> 
+      <div>
+        <label class="form-label" for="input-x1">X</label>
+        <input type="text" class="form-control" id="input-x1">
       </div>
-      <div class="mb-3">
-        <label class="form-label">Pelajaran</label>
-        <input type="text" class="form-control" id="input-pelajaran">
+      <div>
+        <label class="form-label" for="input-xi1">XI</label>
+        <input type="text" class="form-control" id="input-xi1">
       </div>
-      <div class="mb-3">
-        <label class="form-label">Guru</label>
-        <input type="text" class="form-control" id="input-guru">
+      <div>
+        <label class="form-label" for="input-xii1">XIIl</label>
+        <input type="text" class="form-control" id="input-xii1">
       </div>
-      <div class="mb-3">
-        <label class="form-label">Mapel</label>
-        <input type="text" class="form-control" id="input-mp">
+    </div>
+    <div class="mb-3" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+      <div>
+        <label class="form-label" for="input-jam2">Jam2</label>
+        <input type="text" class="form-control" id="input-jam2">
       </div>
-      <div class="d-flex justify-content-center">
+      <div>
+        <label class="form-label" for="input-x2">X</label>
+        <input type="text" class="form-control" id="input-x2">
+      </div>
+      <div>
+        <label class="form-label" for="input-xi2">XI</label>
+        <input type="text" class="form-control" id="input-xi2">
+      </div>
+      <div>
+        <label class="form-label" for="input-xii2">XII</label>
+        <input type="text" class="form-control" id="input-xii2">
+      </div>
+    </div>
+    <div class="mb-3" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+      <div>
+        <label class="form-label" for="input-jam3">Jam3</label>
+        <input type="text" class="form-control" id="input-jam3">
+      </div>
+      <div>
+        <label class="form-label" for="input-x3">X</label>
+        <input type="text" class="form-control" id="input-x3">
+      </div>
+      <div>
+        <label class="form-label" for="input-xi3">XI</label>
+        <input type="text" class="form-control" id="input-xi3">
+      </div>
+      <div>
+        <label class="form-label" for="input-xii3">XII</label>
+        <input type="text" class="form-control" id="input-xii3">
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
       <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
-      </div>
+    </div>
   </form>
+  
+  
 
   <script type="module">
-    import { ambilMapel, ubahMapel } from './functions.js';
+    import { ambilSenin, ubahSenin } from './functions.js';
 
     let tombolUbah = document.getElementById('tombol-ubah');
-    let elemenMapel = document.getElementById('input-mp');
-    let elemenGuru = document.getElementById('input-guru');
-    let elemenPelajaran = document.getElementById('input-pelajaran');
-    let elemenJam = document.getElementById('input-jam');
+    let elemenJam1 = document.getElementById('input-jam1');
+    let elemenX1 = document.getElementById('input-x1');
+    let elemenXI1 = document.getElementById('input-xi1');
+    let elemenXII1 = document.getElementById('input-xii1');
+    let elemenJam2 = document.getElementById('input-jam2');
+    let elemenX2 = document.getElementById('input-x2');
+    let elemenXI2 = document.getElementById('input-xi2');
+    let elemenXII2 = document.getElementById('input-xii2');
+    let elemenJam3 = document.getElementById('input-jam3');
+    let elemenX3 = document.getElementById('input-x3');
+    let elemenXI3 = document.getElementById('input-xi3');
+    let elemenXII3 = document.getElementById('input-xii3');
+
+
 
     const queryString = window.location.search
     const parameterURL = new URLSearchParams(queryString);
     const docId = parameterURL.get('docId')
-    const mapel = await ambilMapel(docId);
+    const senin = await ambilSenin(docId);
 
-    elemenJam.value = mapel.jam;
-    elemenPelajaran.value = mapel.pelajaran;
-    elemenGuru.value = mapel.guru;
-    elemenMapel.value = mapel.mp;
+    elemenJam1.value = senin.jam1;
+    elemenX1.value = senin.x1;
+    elemenXI1.value = senin.xi1;
+    elemenXII1.value = senin.xii1;
+    elemenJam2.value = senin.jam2;
+    elemenX2.value = senin.x2;
+    elemenXI2.value = senin.xi2;
+    elemenXII2.value = senin.xii2;
+    elemenJam3.value = senin.jam3;
+    elemenX3.value = senin.x3;
+    elemenXI3.value = senin.xi3;
+    elemenXII3.value = senin.xii3;
     
     
 
 
     tombolUbah.addEventListener('click', async function(el) {
       el.preventDefault();
-      await ubahMapel(docId, elemenJam.value, elemenPelajaran.value,  elemenGuru.value, elemenMapel.value);
+      await ubahSenin(docId, elemenJam1.value, elemenX1.value, elemenXI1.value, elemenXII1.value,
+                            elemenJam2.value, elemenX2.value, elemenXI2.value, elemenXII2.value,
+                            elemenJam3.value, elemenX3.value, elemenXI3.value, elemenXII3.value
+      );
       window.location.href = 'index.html';
-    });e
+    });
   </script>
 
   <footer class="site-footer section-padding">
@@ -121,7 +180,6 @@
     </div>
 
   </footer>
-
   <div class="container">
 
     <div class="row">
