@@ -127,6 +127,19 @@ export async function hapusGuru(docId) {
   await deleteDoc(doc(db, "guru", docId));
 }
 
+export async function tambahGuru(nama, pelajaran) {
+try {
+const dokRef = await addDoc(collection(db, 'guru'), {
+nama: nama,
+pelajaran: pelajaran
+});
+console.log('berhasil menembah produk ' + dokRef.id);
+} catch (e) {
+console.log('gagal menambah produk ' + e);
+}
+}
+
+
 export async function tambahJadwal(hari, urutan, jam1, jam2, jam3, x1, x2, x3,
                                                     xi1, xi2, xi3,
                                                     xii1, xii2, xii3
