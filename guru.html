@@ -44,12 +44,12 @@
   <form class="mb-3">
     <div class="mb-3" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
       <div>
-        <label class="form-label" for="input-jam1">Jam1</label>
-        <input type="text" class="form-control" id="input-jam1">
+        <label class="form-label" for="input-jam1">Nama Guru</label>
+        <input type="text" class="form-control" id="input-nama">
       </div> 
       <div>
-        <label class="form-label" for="input-x1">X</label>
-        <input type="text" class="form-control" id="input-x1">
+        <label class="form-label" for="input-x1">Pelajaran</label>
+        <input type="text" class="form-control" id="input-pelajaran">
       </div>
     </div>
     <div class="d-flex justify-content-center mt-3">
@@ -60,50 +60,27 @@
   
 
   <script type="module">
-    import { ambilJadwal, ubahJadwal } from './functions.js';
+    import { ambilGuru, ubahGuru } from './functions.js';
 
     let tombolUbah = document.getElementById('tombol-ubah');
-    let elemenJam1 = document.getElementById('input-jam1');
-    let elemenX1 = document.getElementById('input-x1');
-    let elemenXI1 = document.getElementById('input-xi1');
-    let elemenXII1 = document.getElementById('input-xii1');
-    let elemenJam2 = document.getElementById('input-jam2');
-    let elemenX2 = document.getElementById('input-x2');
-    let elemenXI2 = document.getElementById('input-xi2');
-    let elemenXII2 = document.getElementById('input-xii2');
-    let elemenJam3 = document.getElementById('input-jam3');
-    let elemenX3 = document.getElementById('input-x3');
-    let elemenXI3 = document.getElementById('input-xi3');
-    let elemenXII3 = document.getElementById('input-xii3');
+    let elemenNama = document.getElementById('input-nama');
+    let elemenPelajaran = document.getElementById('input-pelajaran');
 
 
 
     const queryString = window.location.search
     const parameterURL = new URLSearchParams(queryString);
     const docId = parameterURL.get('docId')
-    const senin = await ambilJadwal(docId);
+    const guru = await ambilGuru(docId);
 
-    elemenJam1.value = senin.jam1;
-    elemenX1.value = senin.x1;
-    elemenXI1.value = senin.xi1;
-    elemenXII1.value = senin.xii1;
-    elemenJam2.value = senin.jam2;
-    elemenX2.value = senin.x2;
-    elemenXI2.value = senin.xi2;
-    elemenXII2.value = senin.xii2;
-    elemenJam3.value = senin.jam3;
-    elemenX3.value = senin.x3;
-    elemenXI3.value = senin.xi3;
-    elemenXII3.value = senin.xii3;
-    
-    
+    elemenNama.value = guru.nama;
+    elemenPelajaran.value = guru.pelajaran;
+   
 
 
     tombolUbah.addEventListener('click', async function(el) {
       el.preventDefault();
-      await ubahJadwal(docId, elemenJam1.value, elemenX1.value, elemenXI1.value, elemenXII1.value,
-                            elemenJam2.value, elemenX2.value, elemenXI2.value, elemenXII2.value,
-                            elemenJam3.value, elemenX3.value, elemenXI3.value, elemenXII3.value
+      await ubahGuru(docId, elemenNama.value, elemenPelajaran.value
       );
       window.location.href = 'index.html';
     });
@@ -136,34 +113,6 @@
       </div>
     </div>
     </div>
-
-  </footer>
-  <div class="container">
-
-    <div class="row">
-      <div class="d-flex justify-content-center" class="col-12">
-        <h4 class="text-white mb-4 me-5">UNIVERSITY TEYVAT</h4>
-      </div>
-
-      <div class="d-flex justify-content-center" class="col-12">
-        <h6 class="text-white mb-4 me-5">location</h6>
-      </div>
-
-      <div class="d-flex justify-content-center" class="col-12">
-        <p class="text-white mb-4 me-5">121 Teyvat, Gi</p>
-      </div>
-
-      <div class="d-flex justify-content-center">
-        <p class="mb-4 me6">Copyright © 2024 UNIVERSITY TEYVAT Co., Ltd.
-          <br>
-          Design: <a rel="nofollow" href="#" target="_blank">By:RamAkasaka</a>
-        </p>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
 </body>
 
 </html>

@@ -18,6 +18,7 @@
     <link href="main.css" rel="stylesheet">
 
 </head>
+
 <body>
     <table class="height: 100% min-height: 100vh" class="table" id="daftar-mapel">
         <thead>
@@ -45,8 +46,9 @@
     </table>
 
     <div class="d-flex justify-content-center">
-        <button onclick="location.href='tambah.html'" style="background-color: blue; color: white; border-radius: 10px;">Tambah Data Mapel </button>
-      </div>
+        <button onclick="location.href='tambah.html'"
+            style="background-color: blue; color: white; border-radius: 10px;">Tambah Data Mapel </button>
+    </div>
 
     <script type="module">
         import { ambilDaftarGuru, ambilDaftarJadwal, hapusJadwal, capitalizeFirstLetter } from './functions.js';
@@ -61,7 +63,7 @@
                     '<tr>' +
                     '<td>' + data.nama + '<td>' + data.pelajaran + '</td>' +
                     '<td class="stack-up">' +
-                    ' <a href="#" class="btn btn-warning link-ubah"  data="' +
+                    ' <a href="#" class="btn btn-warning link-guru"  data="' +
                     data.id +
                     '">ubah</a> ' +
                     ' <button class="btn btn-danger tombol-hapus" data="' +
@@ -72,53 +74,53 @@
                 nomor = nomor + 1;
             });
             $('.tombol-hapus').click(async function () {
-                await hapusJadwal($(this).attr('data'));
+                await hapusGuru($(this).attr('data'));
                 location.reload();
-            })
-
-            $('.link-ubah').click(async function () {
-                window.location.replace('guru.html?docId=' + $(this).attr('data'));
-            })
-
-            $('#loader').hide();;
-        });
-
-        $(document).ready(async function () {
-            let elemenDaftar = $("#daftar-mapel > tbody#1");
-            let daftarJadwal = await ambilDaftarJadwal();
-            // let hari = "Senin";
-
-            daftarJadwal.forEach((data) => {
-                elemenDaftar.append(
-                    '<tr>' +
-                    '<th>' + capitalizeFirstLetter(data.hari) + '</th>' +
-                    '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '</td>' +
-                    '<td>' + data.x1 + '<br>' + data.x2 + '<br>' + data.x3 + '</td>' +
-                    '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '</td>' +
-                    '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '</td>' +
-                    '<td class="stack-up">' +
-                    ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-                    data.id +
-                    '">ubah</a> ' +
-                    ' <button class="btn btn-danger tombol-hapus" data="' +
-                    data.id +
-                    '">Hapus</button>' + '</td>' +
-                    '</tr>'
-                );
             });
 
-            $('.tombol-hapus').click(async function () {
-                await hapusJadwal($(this).attr('data'));
-                location.reload();
-            })
+            $('.link-guru').click(async function () {
+                window.location.replace('guru.html?docId=' + $(this).attr('data'));
 
-            $('.link-ubah').click(async function () {
-                window.location.replace('ubah.html?docId=' + $(this).attr('data'));
-            })
-
-            $('#loader').hide();
-
+                $('#loader').hide();;
+            });
         });
+
+            $(document).ready(async function () {
+                let elemenDaftar = $("#daftar-mapel > tbody#1");
+                let daftarJadwal = await ambilDaftarJadwal();
+                // let hari = "Senin";
+
+                daftarJadwal.forEach((data) => {
+                    elemenDaftar.append(
+                        '<tr>' +
+                        '<th>' + capitalizeFirstLetter(data.hari) + '</th>' +
+                        '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '</td>' +
+                        '<td>' + data.x1 + '<br>' + data.x2 + '<br>' + data.x3 + '</td>' +
+                        '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '</td>' +
+                        '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '</td>' +
+                        '<td class="stack-up">' +
+                        ' <a href="#" class="btn btn-warning link-ubah"  data="' +
+                        data.id +
+                        '">ubah</a> ' +
+                        ' <button class="btn btn-danger tombol-hapus" data="' +
+                        data.id +
+                        '">Hapus</button>' + '</td>' +
+                        '</tr>'
+                    );
+                });
+
+                $('.tombol-hapus').click(async function () {
+                    await hapusJadwal($(this).attr('data'));
+                    location.reload();
+                })
+
+                $('.link-ubah').click(async function () {
+                    window.location.replace('ubah.html?docId=' + $(this).attr('data'));
+                })
+
+                $('#loader').hide();
+
+            });
     </script>
 
 
