@@ -42,9 +42,11 @@
             <tbody>
             </tbody>
         </table>
-
     </table>
 
+    <div class="d-flex justify-content-center">
+        <button onclick="location.href='tambah.html'" style="background-color: blue; color: white; border-radius: 10px;">Tambah data penjual</button>
+      </div>
 
     <script type="module">
         import { ambilDaftarGuru, ambilDaftarJadwal, capitalizeFirstLetter } from './functions.js';
@@ -108,151 +110,6 @@
             $('#loader').hide();
 
         });
-
-        // $(document).ready(async function () {
-        //     let elemenDaftar = $("#daftar-mapel > tbody#2");
-        //     let daftarSelasa = await ambilDaftarSelasa();
-        //     let hari = "Selasa";
-
-        //     daftarSelasa.forEach((data) => {
-        //         elemenDaftar.append(
-        //             '<tr>' +
-        //             '<th>' + hari + '</th>' +
-        //             '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '<br>' + data.jam4 + '</td>' +
-        //             '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '<br>' + data.x4 + '</td>' +
-        //             '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '<br>' + data.xi4 + '</td>' +
-        //             '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '<br>' + data.xii4 + '</td>' +
-        //             '<td class="stack-up">' +
-        //             ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-        //             data.id +
-        //             '">ubah</a> ' +
-        //             ' <button class="btn btn-danger tombol-hapus" data="' +
-        //             data.id +
-        //             '">Hapus</button>' + '</td>' +
-        //             '</tr>'
-        //         );
-        //     });
-
-        //     $('.tombol-hapus').click(async function () {
-        //         await hapusAbsensi($(this).attr('data'));
-        //         location.reload();
-        //     })
-
-        //     $('.link-ubah').click(async function () {
-        //         window.location.replace('ubah.html?docId=' + $(this).attr('data'));
-        //     })
-
-        //     $('#loader').hide();
-        // });
-
-        // $(document).ready(async function () {
-        //     let elemenDaftar = $("#daftar-mapel > tbody#3");
-        //     let daftarRabu = await ambilDaftarRabu();
-        //     let hari = "Rabu";
-
-        //     daftarRabu.forEach((data) => {
-        //         elemenDaftar.append(
-        //             '<tr>' +
-        //             '<th>' + hari + '</th>' +
-        //             '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '<br>' + data.jam4 + '</td>' +
-        //             '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '<br>' + data.x4 + '</td>' +
-        //             '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '<br>' + data.xi4 + '</td>' +
-        //             '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '<br>' + data.xii4 + '</td>' +
-        //             '<td class="stack-up">' +
-        //             ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-        //             data.id +
-        //             '">ubah</a> ' +
-        //             ' <button class="btn btn-danger tombol-hapus" data="' +
-        //             data.id +
-        //             '">Hapus</button>' + '</td>' +
-        //             '</tr>'
-        //         );
-        //     });
-
-        //     $('.tombol-hapus').click(async function () {
-        //         await hapusAbsensi($(this).attr('data'));
-        //         location.reload();
-        //     })
-
-        //     $('.link-ubah').click(async function () {
-        //         window.location.replace('ubah.html?docId=' + $(this).attr('data'));
-        //     })
-            
-        //     $('#loader').hide();
-        // });
-
-        // $(document).ready(async function () {
-        //     let elemenDaftar = $("#daftar-mapel > tbody#4");
-        //     let daftarKamis = await ambilDaftarKamis();
-        //     let hari = "Kamis";
-
-        //     daftarKamis.forEach((data) => {
-        //         elemenDaftar.append(
-        //             '<tr>' +
-        //             '<th>' + hari + '</th>' +
-        //             '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '<br>' + data.jam4 + '</td>' +
-        //             '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '<br>' + data.x4 + '</td>' +
-        //             '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '<br>' + data.xi4 + '</td>' +
-        //             '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '<br>' + data.xii4 + '</td>' +
-        //             '<td class="stack-up">' +
-        //             ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-        //             data.id +
-        //             '">ubah</a> ' +
-        //             ' <button class="btn btn-danger tombol-hapus" data="' +
-        //             data.id +
-        //             '">Hapus</button>' + '</td>' +
-        //             '</tr>'
-        //         );
-        //     });
-
-        //     $('.tombol-hapus').click(async function () {
-        //         await hapusAbsensi($(this).attr('data'));
-        //         location.reload();
-        //     })
-
-        //     $('.link-ubah').click(async function () {
-        //         window.location.replace('ubah.html?docId=' + $(this).attr('data'));
-        //     })
-            
-        //     $('#loader').hide();
-        // });
-
-        // $(document).ready(async function () {
-        //     let elemenDaftar = $("#daftar-mapel > tbody#5");
-        //     let daftarJumat = await ambilDaftarJumat();
-        //     let hari = "Jum'at";
-
-        //     daftarJumat.forEach((data) => {
-        //         elemenDaftar.append(
-        //             '<tr>' +
-        //             '<th>' + hari + '</th>' +
-        //             '<td>' + data.jam1 + '<br>' + data.jam2 + '<br>' + data.jam3 + '</td>' +
-        //             '<td>' + data.x1 + '<br>' + data.x1 + '<br>' + data.x3 + '</td>' +
-        //             '<td>' + data.xi1 + '<br>' + data.xi2 + '<br>' + data.xi3 + '</td>' +
-        //             '<td>' + data.xii1 + '<br>' + data.xii2 + '<br>' + data.xii3 + '</td>' +
-        //             '<td class="stack-up">' +
-        //             ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-        //             data.id +
-        //             '">ubah</a> ' +
-        //             ' <button class="btn btn-danger tombol-hapus" data="' +
-        //             data.id +
-        //             '">Hapus</button>' + '</td>' +
-        //             '</tr>'
-        //         );
-        //     });
-
-        //     $('.tombol-hapus').click(async function () {
-        //         await hapusAbsensi($(this).attr('data'));
-        //         location.reload();
-        //     })
-
-        //     $('.link-ubah').click(async function () {
-        //         window.location.replace('ubah.html?docId=' + $(this).attr('data'));
-        //     })
-
-        //     $('#loader').hide();
-
-        // });
     </script>
 
 

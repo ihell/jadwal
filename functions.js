@@ -111,3 +111,29 @@ export async function ambilDaftarGuru() {
   return hasil;
 }
 
+export async function tambahJadwal(hari, urutan, jam1, jam2, jam3, x1, x2, x3,
+                                                    xi1, xi2, xi3,
+                                                    xii1, xii2, xii3
+) {
+  try {
+    const dokRef = await addDoc(collection(db, 'jadwal'), {
+      hari: hari,
+      urutan: urutan,
+      jam1: jam1,
+      x1: x1,
+      xi1: xi1,
+      xii1: xii1,
+      jam2: jam2,
+      x2: x2,
+      xi2: xi2,
+      xii2: xii2,
+      jam3: jam3,
+      x3: x3,
+      xi3: xi3,
+      xii3: xii3
+    });
+    console.log('berhasil menembah produk ' + dokRef.id);
+  } catch (e) {
+    console.log('gagal menambah produk ' + e);
+  }
+}
