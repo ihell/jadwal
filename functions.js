@@ -137,3 +137,7 @@ export async function tambahJadwal(hari, urutan, jam1, jam2, jam3, x1, x2, x3,
     console.log('gagal menambah produk ' + e);
   }
 }
+
+export async function hapusJadwal(docId) {
+  await deleteDoc(doc(db, "jadwal", docId));
+}

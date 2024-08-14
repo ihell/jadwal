@@ -45,11 +45,11 @@
     </table>
 
     <div class="d-flex justify-content-center">
-        <button onclick="location.href='tambah.html'" style="background-color: blue; color: white; border-radius: 10px;">Tambah data penjual</button>
+        <button onclick="location.href='tambah.html'" style="background-color: blue; color: white; border-radius: 10px;">Tambah Data Mapel </button>
       </div>
 
     <script type="module">
-        import { ambilDaftarGuru, ambilDaftarJadwal, capitalizeFirstLetter } from './functions.js';
+        import { ambilDaftarGuru, ambilDaftarJadwal, hapusJadwal, capitalizeFirstLetter } from './functions.js';
 
         $(document).ready(async function () {
             let elemenDaftar = $("#daftar-guru > tbody");
@@ -99,7 +99,7 @@
             });
 
             $('.tombol-hapus').click(async function () {
-                await hapusAbsensi($(this).attr('data'));
+                await hapusJadwal($(this).attr('data'));
                 location.reload();
             })
 

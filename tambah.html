@@ -133,26 +133,27 @@
         let elemenHari = document.getElementById('input-hari');
         let elemenUrutan = document.getElementById('input-urutan');
         let elemenJam1 = document.getElementById('jam1');
-        let elemenX1 = document.getElementById('x1');
-        let elemenXi1 = document.getElementById('xi1');
-        let elemenXii1 = document.getElementById('xii1');
         let elemenJam2 = document.getElementById('jam2');
-        let elemenX2 = document.getElementById('x2');
-        let elemenXi2 = document.getElementById('xi2');
-        let elemenXii2 = document.getElementById('xi12');
         let elemenJam3 = document.getElementById('jam3');
+        let elemenX1 = document.getElementById('x1');
+        let elemenX2 = document.getElementById('x2');
         let elemenX3 = document.getElementById('x3');
+        let elemenXi1 = document.getElementById('xi1');
+        let elemenXi2 = document.getElementById('xi2');
         let elemenXi3 = document.getElementById('xi3');
+        let elemenXii1 = document.getElementById('xii1');
+        let elemenXii2 = document.getElementById('xii2');
         let elemenXii3 = document.getElementById('xii3');
        
 
 
         tombolTambah.addEventListener('click', async function (e) {
             e.preventDefault();
-            await tambahJadwal(elemenHari.value, elemenUrutan.value, elemenJam1.value, elemenX1.value, elemenXi1.value, elemenXii1.value, 
-                                                                     elemenJam2.value, elemenX2.value, elemenXi2.value,  elemenXii3.value,
-                                                                     elemenJam3.value, elemenX3.value, elemenXi3.value, elemenXii3.value
-                                                                    );
+            await tambahJadwal(elemenHari.value, elemenUrutan.value, elemenJam1.value, elemenJam2.value, elemenJam3.value, 
+                                                                        elemenX1.value, elemenX2.value, elemenX3.value, 
+                                                                        elemenXi1.value, elemenXi2.value, elemenXi3.value,
+                                                                        elemenXii1.value, elemenXii2.value, elemenXii3.value
+                                                                   );
             window.location.href = 'index.html'
         })
     </script>
