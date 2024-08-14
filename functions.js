@@ -105,10 +105,23 @@ export async function ambilDaftarGuru() {
 
     });
   });
-
-
-
   return hasil;
+}
+
+export async function ubahGuru(docId, nama, pelajaran
+) {
+  await updateDoc(doc(db, "guru", docId), {
+ nama: nama,
+ pelajaran: pelajaran
+  });
+}
+
+//  ambil data
+export async function ambilGuru(docId) {
+  const docRef = await doc(db, "guru", docId);
+  const docSnap = await getDoc(docRef);
+
+  return await docSnap.data();
 }
 
 export async function tambahJadwal(hari, urutan, jam1, jam2, jam3, x1, x2, x3,

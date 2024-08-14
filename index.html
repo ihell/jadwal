@@ -71,7 +71,16 @@
                 );
                 nomor = nomor + 1;
             });
-            $('#loader').hide();
+            $('.tombol-hapus').click(async function () {
+                await hapusJadwal($(this).attr('data'));
+                location.reload();
+            })
+
+            $('.link-ubah').click(async function () {
+                window.location.replace('guru.html?docId=' + $(this).attr('data'));
+            })
+
+            $('#loader').hide();;
         });
 
         $(document).ready(async function () {

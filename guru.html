@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Data siswa</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link href="css/tooplate.css" rel="stylesheet">
+
+</head>
+
+  <nav class="navbar navbar-expand-lg navbar-white bg-white">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">ABSENCE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavWhiteDropdown" aria-controls="navbarNavWhiteDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavWhiteDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <button class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </button>
+            <ul class="dropdown-menu dropdown-menu-white">
+              <li><a class="dropdown-item" href="index.html">Lihat Absensi</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<body class="m-4">
+  
+  <form class="mb-3">
+    <div class="mb-3" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+      <div>
+        <label class="form-label" for="input-jam1">Jam1</label>
+        <input type="text" class="form-control" id="input-jam1">
+      </div> 
+      <div>
+        <label class="form-label" for="input-x1">X</label>
+        <input type="text" class="form-control" id="input-x1">
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <button type="submit" class="btn btn-primary" id="tombol-ubah">Simpan Perubahan Guru</button>
+      </div>
+  </form>
+  
+  
+
+  <script type="module">
+    import { ambilJadwal, ubahJadwal } from './functions.js';
+
+    let tombolUbah = document.getElementById('tombol-ubah');
+    let elemenJam1 = document.getElementById('input-jam1');
+    let elemenX1 = document.getElementById('input-x1');
+    let elemenXI1 = document.getElementById('input-xi1');
+    let elemenXII1 = document.getElementById('input-xii1');
+    let elemenJam2 = document.getElementById('input-jam2');
+    let elemenX2 = document.getElementById('input-x2');
+    let elemenXI2 = document.getElementById('input-xi2');
+    let elemenXII2 = document.getElementById('input-xii2');
+    let elemenJam3 = document.getElementById('input-jam3');
+    let elemenX3 = document.getElementById('input-x3');
+    let elemenXI3 = document.getElementById('input-xi3');
+    let elemenXII3 = document.getElementById('input-xii3');
+
+
+
+    const queryString = window.location.search
+    const parameterURL = new URLSearchParams(queryString);
+    const docId = parameterURL.get('docId')
+    const senin = await ambilJadwal(docId);
+
+    elemenJam1.value = senin.jam1;
+    elemenX1.value = senin.x1;
+    elemenXI1.value = senin.xi1;
+    elemenXII1.value = senin.xii1;
+    elemenJam2.value = senin.jam2;
+    elemenX2.value = senin.x2;
+    elemenXI2.value = senin.xi2;
+    elemenXII2.value = senin.xii2;
+    elemenJam3.value = senin.jam3;
+    elemenX3.value = senin.x3;
+    elemenXI3.value = senin.xi3;
+    elemenXII3.value = senin.xii3;
+    
+    
+
+
+    tombolUbah.addEventListener('click', async function(el) {
+      el.preventDefault();
+      await ubahJadwal(docId, elemenJam1.value, elemenX1.value, elemenXI1.value, elemenXII1.value,
+                            elemenJam2.value, elemenX2.value, elemenXI2.value, elemenXII2.value,
+                            elemenJam3.value, elemenX3.value, elemenXI3.value, elemenXII3.value
+      );
+      window.location.href = 'index.html';
+    });
+  </script>
+
+  <footer class="site-footer section-padding">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="d-flex justify-content-center" class="col-12">
+          <h4 class="text-white mb-4 me-5">UNIVERSITY TEYVAT</h4>
+        </div>
+
+        <div class="d-flex justify-content-center" class="col-12">
+          <h6 class="text-white mb-4 me-5">location</h6>
+        </div>
+
+        <div class="d-flex justify-content-center" class="col-12">
+          <p class="text-white mb-4 me-5">121 Teyvat, Gi</p>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <p class="mb-4 me6">Copyright © 2024 Hallu Rent Co., Ltd.
+            <br>
+            Design: <a rel="nofollow" href="https://www.tooplate.com/" target="_blank">By:RamAkasaka</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+  </footer>
+  <div class="container">
+
+    <div class="row">
+      <div class="d-flex justify-content-center" class="col-12">
+        <h4 class="text-white mb-4 me-5">UNIVERSITY TEYVAT</h4>
+      </div>
+
+      <div class="d-flex justify-content-center" class="col-12">
+        <h6 class="text-white mb-4 me-5">location</h6>
+      </div>
+
+      <div class="d-flex justify-content-center" class="col-12">
+        <p class="text-white mb-4 me-5">121 Teyvat, Gi</p>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <p class="mb-4 me6">Copyright © 2024 UNIVERSITY TEYVAT Co., Ltd.
+          <br>
+          Design: <a rel="nofollow" href="#" target="_blank">By:RamAkasaka</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>
