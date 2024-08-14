@@ -104,7 +104,7 @@
   
 
   <script type="module">
-    import { ambilSenin, ubahSenin } from './functions.js';
+    import { ambilJadwal, ubahJadwal } from './functions.js';
 
     let tombolUbah = document.getElementById('tombol-ubah');
     let elemenJam1 = document.getElementById('input-jam1');
@@ -125,7 +125,7 @@
     const queryString = window.location.search
     const parameterURL = new URLSearchParams(queryString);
     const docId = parameterURL.get('docId')
-    const senin = await ambilSenin(docId);
+    const senin = await ambilJadwal(docId);
 
     elemenJam1.value = senin.jam1;
     elemenX1.value = senin.x1;
@@ -145,7 +145,7 @@
 
     tombolUbah.addEventListener('click', async function(el) {
       el.preventDefault();
-      await ubahSenin(docId, elemenJam1.value, elemenX1.value, elemenXI1.value, elemenXII1.value,
+      await ubahJadwal(docId, elemenJam1.value, elemenX1.value, elemenXI1.value, elemenXII1.value,
                             elemenJam2.value, elemenX2.value, elemenXI2.value, elemenXII2.value,
                             elemenJam3.value, elemenX3.value, elemenXI3.value, elemenXII3.value
       );
