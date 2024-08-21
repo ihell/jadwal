@@ -47,7 +47,7 @@ export function registerUser(email, password) {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(`Error: ${errorMessage}`);
+      alert("Gagal Melakukan Registrasi");
     });
 }
 
@@ -67,7 +67,7 @@ export function loginUser(email, password) {
     .catch((error) => {
       // Tangani error login
       const errorMessage = error.message;
-      alert(`Error: ${errorMessage}`);
+      alert("User / Password Tidak ditemukan!!");
     });
 }
 
