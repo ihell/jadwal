@@ -1,3 +1,4 @@
+// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
@@ -11,8 +12,13 @@ import {
   orderBy,
   updateDoc
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB8g6kCR8laDnH1YCF9cYVy10lF1y7s2i0",
   authDomain: "bakwan-jagung.firebaseapp.com",
@@ -23,10 +29,48 @@ const firebaseConfig = {
   measurementId: "G-VBHD7G08PJ"
 };
 
-// ambil data untuk mapel hari senin
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
+// Function to register a new user
+export function registerUser(email, password) {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Successful registration
+      const user = userCredential.user;
+      alert("Registrasi berhasil! Silakan login.");
+      window.location.href = "login.html"; // Redirect to login page
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(`Error: ${errorMessage}`);
+    });
+}
+
+// auth.js
+export function loginUser(email, password) {
+  const auth = getAuth();
+  
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Login berhasil
+      const user = userCredential.user;
+      alert("Login berhasil!");
+
+      // Arahkan ke index.html
+      window.location.href = "index2.html";
+    })
+    .catch((error) => {
+      // Tangani error login
+      const errorMessage = error.message;
+      alert(`Error: ${errorMessage}`);
+    });
+}
+
+// Function to get schedule data
 export async function ambilDaftarJadwal() {
   const refDokumen = collection(db, "jadwal");
   const kueri = query(refDokumen, orderBy("urutan"));
@@ -54,10 +98,12 @@ export async function ambilDaftarJadwal() {
   return hasil;
 }
 
+// Function to format numbers
 export function formatAngka(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+// Function to update a schedule
 export async function ubahJadwal(docId, jam1, x1, xi1, xii1,
   jam2, x2, xi2, xii2,
   jam3, x3, xi3, xii3
@@ -78,19 +124,20 @@ export async function ubahJadwal(docId, jam1, x1, xi1, xii1,
   });
 }
 
-//  ambil data
+// Function to get a specific schedule
 export async function ambilJadwal(docId) {
-  const docRef = await doc(db, "jadwal", docId);
+  const docRef = doc(db, "jadwal", docId);
   const docSnap = await getDoc(docRef);
 
-  return await docSnap.data();
+  return docSnap.data();
 }
 
+// Function to capitalize the first letter of a string
 export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// ambil data untuk guru
+// Function to get the list of teachers
 export async function ambilDaftarGuru() {
   const refDokumen = collection(db, "guru");
   const kueri = query(refDokumen, orderBy("nama"));
@@ -102,47 +149,49 @@ export async function ambilDaftarGuru() {
       id: dok.id,
       nama: dok.data().nama,
       pelajaran: dok.data().pelajaran,
-
     });
   });
   return hasil;
 }
 
-export async function ubahGuru(docId, nama, pelajaran
-) {
+// Function to update a teacher's details
+export async function ubahGuru(docId, nama, pelajaran) {
   await updateDoc(doc(db, "guru", docId), {
- nama: nama,
- pelajaran: pelajaran
+    nama: nama,
+    pelajaran: pelajaran
   });
 }
 
+// Function to get a specific teacher's details
 export async function ambilGuru(docId) {
-  const docRef = await doc(db, "guru", docId);
+  const docRef = doc(db, "guru", docId);
   const docSnap = await getDoc(docRef);
 
-  return await docSnap.data();
+  return docSnap.data();
 }
 
+// Function to delete a teacher
 export async function hapusGuru(docId) {
   await deleteDoc(doc(db, "guru", docId));
 }
 
+// Function to add a new teacher
 export async function tambahGuru(nama, pelajaran) {
-try {
-const dokRef = await addDoc(collection(db, 'guru'), {
-nama: nama,
-pelajaran: pelajaran
-});
-console.log('berhasil menembah produk ' + dokRef.id);
-} catch (e) {
-console.log('gagal menambah produk ' + e);
-}
+  try {
+    const dokRef = await addDoc(collection(db, 'guru'), {
+      nama: nama,
+      pelajaran: pelajaran
+    });
+    console.log('Berhasil menambah guru ' + dokRef.id);
+  } catch (e) {
+    console.log('Gagal menambah guru ' + e);
+  }
 }
 
-
+// Function to add a new schedule
 export async function tambahJadwal(hari, urutan, jam1, jam2, jam3, x1, x2, x3,
-                                                    xi1, xi2, xi3,
-                                                    xii1, xii2, xii3
+  xi1, xi2, xi3,
+  xii1, xii2, xii3
 ) {
   try {
     const dokRef = await addDoc(collection(db, 'jadwal'), {
@@ -161,12 +210,13 @@ export async function tambahJadwal(hari, urutan, jam1, jam2, jam3, x1, x2, x3,
       xi3: xi3,
       xii3: xii3
     });
-    console.log('berhasil menembah produk ' + dokRef.id);
+    console.log('Berhasil menambah jadwal ' + dokRef.id);
   } catch (e) {
-    console.log('gagal menambah produk ' + e);
+    console.log('Gagal menambah jadwal ' + e);
   }
 }
 
+// Function to delete a schedule
 export async function hapusJadwal(docId) {
   await deleteDoc(doc(db, "jadwal", docId));
 }
