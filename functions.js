@@ -15,7 +15,8 @@ import {
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 // Firebase configuration
@@ -69,6 +70,23 @@ export function loginUser(email, password) {
       alert(`Error: ${errorMessage}`);
     });
 }
+
+// functions.js
+export function logoutUser() {
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {
+      // Logout berhasil
+      alert("Anda telah logout.");
+      window.location.href = "login.html"; // Redirect to login page
+    })
+    .catch((error) => {
+      // Tangani error logout
+      alert(`Error: ${error.message}`);
+    });
+}
+
+
 
 // Function to get schedule data
 export async function ambilDaftarJadwal() {

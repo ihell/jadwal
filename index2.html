@@ -19,6 +19,8 @@
 
 </head>
 
+<button id="logoutButton" class="btn btn-danger">Logout</button>
+
 <body>
     <table class="height: 100% min-height: 100vh" class="table" id="daftar-mapel">
         <thead>
@@ -57,8 +59,9 @@
     </div>
 
     <script type="module">
-        import { ambilDaftarGuru, ambilDaftarJadwal, hapusJadwal, hapusGuru, capitalizeFirstLetter } from './functions.js';
+        import { ambilDaftarGuru, ambilDaftarJadwal, hapusJadwal, hapusGuru, logoutUser, capitalizeFirstLetter } from './functions.js';
 
+    
         $(document).ready(async function () {
             let elemenDaftar = $("#daftar-guru > tbody");
             let daftarGuru = await ambilDaftarGuru();
@@ -125,8 +128,11 @@
                 })
 
                 $('#loader').hide();
-
             });
+
+              document.getElementById('logoutButton').addEventListener('click', () => {
+            logoutUser();
+        });
     </script>
 
 
