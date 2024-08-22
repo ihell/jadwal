@@ -86,7 +86,19 @@ export function logoutUser() {
     });
 }
 
+// Fungsi untuk mengecek apakah user sudah login
+export function checkSession() {
+  const username = sessionStorage.getItem('username');
+  if (!username) {
+      // Jika tidak ada sesi, redirect ke halaman login
+      window.location.replace('../login.html');
+  }
+}
 
+// Fungsi untuk mendapatkan username yang tersimpan di session
+export function getUsername() {
+  return sessionStorage.getItem('username');
+}
 
 // Function to get schedule data
 export async function ambilDaftarJadwal() {
