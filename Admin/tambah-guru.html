@@ -15,7 +15,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-    <link href="css/tooplate.css" rel="stylesheet">
+    <link href="../css/tooplate.css" rel="stylesheet">
 
 </head>
 
@@ -35,7 +35,7 @@
                             Menu
                         </button>
                         <ul class="dropdown-menu dropdown-menu-white">
-                            <li><a class="dropdown-item" href="index.html">Lihat Data</a></li>
+                            <li><a class="dropdown-item" href="index2.html">Lihat Data</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -60,7 +60,7 @@
       </form>
 
     <script type="module">
-        import { tambahGuru } from './functions.js';
+        import { tambahGuru } from './../functions.js';
 
         let tombolTambah = document.getElementById('tombol-tambah');
         let elemenNama = document.getElementById('input-nama');
@@ -69,7 +69,7 @@
         tombolTambah.addEventListener('click', async function (e) {
             e.preventDefault();
             await tambahGuru(elemenNama.value, elemenPelajaran.value );
-            window.location.href = 'index.html'
+            window.location.href = 'index2.html'
         })
     </script>
 

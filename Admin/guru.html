@@ -14,7 +14,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link href="css/tooplate.css" rel="stylesheet">
+  <link href="../css/tooplate.css" rel="stylesheet">
 
 </head>
 
@@ -31,7 +31,7 @@
               Menu
             </button>
             <ul class="dropdown-menu dropdown-menu-white">
-              <li><a class="dropdown-item" href="index.html">Lihat Absensi</a></li>
+              <li><a class="dropdown-item" href="index2.html">Lihat Mapel</a></li>
             </ul>
           </li>
         </ul>
@@ -60,7 +60,7 @@
   
 
   <script type="module">
-    import { ambilGuru, ubahGuru } from './functions.js';
+    import { ambilGuru, ubahGuru } from './../functions.js';
 
     let tombolUbah = document.getElementById('tombol-ubah');
     let elemenNama = document.getElementById('input-nama');
@@ -82,7 +82,7 @@
       el.preventDefault();
       await ubahGuru(docId, elemenNama.value, elemenPelajaran.value
       );
-      window.location.href = 'index.html';
+      window.location.href = 'index2.html';
     });
   </script>
 
