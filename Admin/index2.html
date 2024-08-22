@@ -59,8 +59,9 @@
     </div>
 
     <script type="module">
-        import { ambilDaftarGuru, ambilDaftarJadwal, hapusJadwal, hapusGuru, logoutUser, capitalizeFirstLetter } from './../functions.js';
+        import { ambilDaftarGuru, ambilDaftarJadwal, hapusJadwal, hapusGuru, logoutUser, checkSession, capitalizeFirstLetter } from './../functions.js';
 
+        checkSession();
     
         $(document).ready(async function () {
             let elemenDaftar = $("#daftar-guru > tbody");
