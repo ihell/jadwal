@@ -62,7 +62,7 @@ export function loginUser(email, password) {
       alert("Login berhasil!");
 
       // Arahkan ke index.html
-      window.location.href = "index2.html";
+      window.location.href = "Admin/index2.html";
     })
     .catch((error) => {
       // Tangani error login
